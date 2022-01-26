@@ -42,6 +42,11 @@ function clicked( e ){
             typeLetter( e.target.getAttribute(`data-letter`), e.target.getAttribute(`data-index` ) );
         }
     }
+    else if( c.contains(`tileBox`) ){
+        if( app.round.input.length <= app.settings.maxLength ){
+            typeLetter( e.target.children[0].getAttribute(`data-letter`), e.target.getAttribute(`data-index` ) );
+        }
+    }
     else if( c.contains(`submit`) ){ submitWord(); }
     else if( c.contains(`backspace`) ){ backspace(); }
     else if( c.contains(`jumble`) ){ jumbleLetters(); }
@@ -72,7 +77,7 @@ function typeLetter( q, i ){
         if( app.round.letters[l].ind == i && app.round.letters[l].pressed == false ){
             app.round.letters[l].pressed = true;
             app.round.input += q;
-            updateTiles();            
+            updateTiles();
             refreshInput();
         }
     }
@@ -262,11 +267,11 @@ function updateTiles(){
     let t = document.getElementById(`tiles`);
     for( l in Object.keys( app.round.letters ) ){
         let k = app.round.letters[Object.keys( app.round.letters )[l]];
-        t.children[k.ind].innerHTML = app.round.letters[k.str].str;
-        t.children[k.ind].setAttribute(`data-letter`, app.round.letters[k.str].str );
-        t.children[k.ind].setAttribute(`data-index`, k.ind );
-        if( k.pressed ){ t.children[k.ind].classList.add(`pressed`); }
-        else{ t.children[k.ind].classList.remove(`pressed`); }
+        t.children[k.ind].children[0].innerHTML = app.round.letters[k.str].str;
+        t.children[k.ind].children[0].setAttribute(`data-letter`, app.round.letters[k.str].str );
+        t.children[k.ind].children[0].setAttribute(`data-index`, k.ind );
+        if( k.pressed ){ t.children[k.ind].children[0].classList.add(`pressed`); }
+        else{ t.children[k.ind].children[0].classList.remove(`pressed`); }
     }
 }
 
@@ -424,6 +429,7 @@ function hardReset(){
 function loadGame(){
     if( JSON.parse( localStorage.getItem( `app` ) ) !== null ){
         app = JSON.parse( localStorage.getItem( `app` ) );
+        document.querySelector(`.round`).innerHTML = `Round ${app.game.round}`;
         buildBoard();
         updateBoard();
         updateStrikes();

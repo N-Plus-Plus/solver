@@ -121,8 +121,13 @@ section{
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    padding: 3.75vh;
+    padding: 1.875vh;
     width: 100%;
+}
+.tileBox{
+    width: var( --tileUnit ) + 1.875vh;
+    height: var( --tileUnit ) + 1.875vh;
+    padding: 1.875vh;
 }
 .tile{
     width: var( --tileUnit );
@@ -132,7 +137,7 @@ section{
     color: var(--background );
     cursor: pointer;
     border-radius: 1vh;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;    
 }
 @keyframes blink {
     0% { opacity: 0; }
