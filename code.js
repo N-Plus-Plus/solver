@@ -99,8 +99,8 @@ function submitWord( q ){
     if( q !== undefined ){ w = q; }
     if( String(w).length > 0 ){
         if( dictionary[w.length].indexOf( w ) > -1 ){ // real words only
+            app.round.guesses.push(w);
             if( app.round.guesses.indexOf( w ) == -1 ){ // unique guesses only
-                app.round.guesses.push(w);
                 let arr = w.split(``);
                 for( j in app.round.words ){
                     if( app.round.words[j].ltr.length == arr.length ){ // else there's no point checking
