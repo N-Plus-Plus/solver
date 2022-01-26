@@ -9,6 +9,9 @@
     --xp: #8067B7;
     --naughty: #D8334A;
     --color: #fffC;
+    --colorDark: #000D;
+    --submit: #4FC1E9;
+    --sideButt: #4FC1E9;
     
     --vh: 1vh;
     --dispWidth: 40vw;
@@ -129,6 +132,7 @@ section{
     color: var(--background );
     cursor: pointer;
     border-radius: 1vh;
+    transition: all 0.1s ease-in-out;
 }
 @keyframes blink {
     0% { opacity: 0; }
@@ -162,16 +166,27 @@ section{
     height: 100%;
     width: 50%;
     border-radius: 2.75vh;
-    background-color: var(--interface );
     cursor: pointer;
     transition: all 0.5s;
+    background-color: var(--interface);
+    box-shadow: inset #fff4 -0.2vh 0.4vh 0.3vh;
+    color: var(--color);
+    transition: all 0.25s ease-in-out;
+}
+.submit.valid{
+    background-color: var(--submit);
+    color: var(--colorDark);
 }
 .backspace,.jumble{    
-    height: 100%;
-    width: 17.5%;
+    height: 75%;
+    width: 12.5%;
     border-radius: 2.75vh;
-    background-color: var(--interface );
     cursor: pointer;
+    font-weight: 800;
+    color: var(--color);
+    background-color: var(--interface);
+    box-shadow: inset #fff2 -0.2vh 0.3vh 0.2vh;
+    font-size: 2vh;
 }
 
 .barEmpty{
@@ -228,7 +243,7 @@ section{
 }
 .solved{
     background-color: var(--solved);
-    color: #000D;
+    color: var(--colorDark);
     box-shadow: inset #fff4 -0.2vh 0.4vh 0.3vh;
 }
 

@@ -65,7 +65,7 @@ function typeLetter( q, i ){
                 i = app.round.letters[l].ind;
                 break;
             }
-        }    
+        } 
     }
     for( j in Object.keys( app.round.letters ) ){
         let l = Object.keys( app.round.letters )[j];
@@ -76,6 +76,7 @@ function typeLetter( q, i ){
             refreshInput();
         }
     }
+    updateSubmit();
 }
 
 function refreshInput(){
@@ -223,6 +224,7 @@ function resetKeys(){
     }
     refreshInput();
     updateTiles();
+    updateSubmit();
 }
 
 function backspace(){
@@ -237,7 +239,13 @@ function backspace(){
         app.round.input = app.round.input.slice(0,app.round.input.length - 1);
         updateTiles();
         refreshInput();
+        updateSubmit();
     }
+}
+
+function updateSubmit(){
+    if( app.round.input == `` ){ document.querySelector(`.submit`).classList.remove(`valid`); }
+    else{ document.querySelector(`.submit`).classList.add(`valid`); }
 }
 
 function jumbleLetters(){
